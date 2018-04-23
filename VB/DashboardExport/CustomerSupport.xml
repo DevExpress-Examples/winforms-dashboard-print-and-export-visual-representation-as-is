@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dashboard>
+  <DataSources>
+    <DataSource Name="Customer Support" />
+  </DataSources>
+  <Items>
+    <Chart UniqueName="Chart 1" Name="Processed Issues by Platform / Employee" DataSource="Customer Support" Rotated="true">
+      <DataItems>
+        <Dimension DataMember="IssueType" SortByMeasure="DataItem5" UniqueName="DataItem0" />
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem1" />
+        <Dimension DataMember="ProductName" SortByMeasure="DataItem1" TopNCount="3" TopNMeasure="DataItem1" UniqueName="DataItem2" />
+        <Dimension DataMember="Employee" SortByMeasure="DataItem1" UniqueName="DataItem4" />
+        <Measure DataMember="IssueTypeIndex" UniqueName="DataItem5" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure UniqueName="DataItem5" />
+      </HiddenMeasures>
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem0" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+        <Argument UniqueName="DataItem4" />
+      </Arguments>
+      <Panes>
+        <Pane>
+          <AxisY Title="Issue Count" />
+          <Series>
+            <Simple SeriesType="StackedBar">
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <RangeFilter UniqueName="Range Filter 1" DataSource="Customer Support">
+      <DataItems>
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem0" />
+        <Dimension DataMember="Opened" DateTimeGroupInterval="MonthYear" UniqueName="DataItem1" />
+      </DataItems>
+      <Argument UniqueName="DataItem1" />
+      <Series>
+        <Simple SeriesType="Line">
+          <Value UniqueName="DataItem0" />
+        </Simple>
+      </Series>
+    </RangeFilter>
+    <Grid UniqueName="Grid 1" Name="Top 8 Customers" DataSource="Customer Support">
+      <DataItems>
+        <Dimension DataMember="Customer" TopNEnabled="true" TopNCount="8" TopNMeasure="DataItem0" UniqueName="DataItem1" />
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem0" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension UniqueName="DataItem1" />
+        </GridDimensionColumn>
+        <GridMeasureColumn Name="Created Issues">
+          <Measure UniqueName="DataItem0" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions ShowHorizontalLines="true" ShowVerticalLines="true" />
+    </Grid>
+    <Grid UniqueName="Grid 2" Name="Top 8 Employees" DataSource="Customer Support">
+      <DataItems>
+        <Dimension DataMember="Employee" TopNEnabled="true" TopNCount="8" TopNMeasure="DataItem2" UniqueName="DataItem1" />
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem2" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension UniqueName="DataItem1" />
+        </GridDimensionColumn>
+        <GridMeasureColumn Name="Processed Issues">
+          <Measure UniqueName="DataItem2" />
+        </GridMeasureColumn>
+      </GridColumns>
+      <GridOptions ShowHorizontalLines="true" ShowVerticalLines="true" />
+    </Grid>
+    <Chart UniqueName="Chart 2" Name="Average Response Time by Platform / Employee" DataSource="Customer Support" Rotated="true">
+      <DataItems>
+        <Measure DataMember="ResolvedTime" SummaryType="Average" UniqueName="DataItem1" />
+        <Dimension DataMember="IssueType" SortByMeasure="DataItem0" UniqueName="DataItem3" />
+        <Dimension DataMember="ProductName" SortOrder="Descending" UniqueName="DataItem2" />
+        <Measure DataMember="IssueTypeIndex" SummaryType="Min" UniqueName="DataItem0" />
+        <Dimension DataMember="Employee" SortByMeasure="DataItem1" UniqueName="DataItem5" />
+      </DataItems>
+      <HiddenMeasures>
+        <Measure UniqueName="DataItem0" />
+      </HiddenMeasures>
+      <InteractivityOptions IsDrillDownEnabled="true" />
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem3" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+        <Argument UniqueName="DataItem5" />
+      </Arguments>
+      <Panes>
+        <Pane>
+          <AxisY Title="Response Time, Hours" />
+          <Series>
+            <Simple>
+              <Value UniqueName="DataItem1" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart UniqueName="Chart 3" Name="Opened Issues by Month" DataSource="Customer Support" IgnoreMasterFilters="true">
+      <DataItems>
+        <Dimension DataMember="Opened" UniqueName="DataItem1" />
+        <Dimension DataMember="Opened" DateTimeGroupInterval="Month" UniqueName="DataItem2" />
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem3" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane>
+          <AxisY TitleVisible="false" Title="Opened (Count)" />
+          <Series>
+            <Simple SeriesType="Line">
+              <Value UniqueName="DataItem3" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Chart UniqueName="Chart 4" Name=" Average Response Time (h) by Month" DataSource="Customer Support" IgnoreMasterFilters="true">
+      <DataItems>
+        <Dimension DataMember="Opened" UniqueName="DataItem1" />
+        <Dimension DataMember="Opened" DateTimeGroupInterval="Month" UniqueName="DataItem2" />
+        <Measure DataMember="ResolvedTime" SummaryType="Average" UniqueName="DataItem0" />
+      </DataItems>
+      <SeriesDimensions>
+        <SeriesDimension UniqueName="DataItem1" />
+      </SeriesDimensions>
+      <Arguments>
+        <Argument UniqueName="DataItem2" />
+      </Arguments>
+      <Panes>
+        <Pane>
+          <AxisY TitleVisible="false" Title="ResolvedTime (Average)" />
+          <Series>
+            <Simple SeriesType="Line">
+              <Value UniqueName="DataItem0" />
+            </Simple>
+          </Series>
+        </Pane>
+      </Panes>
+    </Chart>
+    <Gauge UniqueName="Gauges 1" Name="Gauges 1" ShowCaption="false" DataSource="Customer Support" ViewType="CircularThreeFourth">
+      <DataItems>
+        <Measure DataMember="Opened" SummaryType="Count" UniqueName="DataItem2">
+          <NumericFormat Precision="0" Unit="Ones" />
+        </Measure>
+      </DataItems>
+      <GaugeElement Name="Total Issues">
+        <ActualValue UniqueName="DataItem2" />
+        <DeltaOptions />
+      </GaugeElement>
+    </Gauge>
+  </Items>
+  <Layout>
+    <LayoutItem Name="Chart 1" Left="0" Top="0.25352112676056338" Right="0.4306864064602961" Bottom="0.88497652582159625" />
+    <LayoutItem Name="Range Filter 1" Left="0" Top="0.88497652582159625" Right="1" Bottom="1" />
+    <LayoutItem Name="Grid 1" Left="0.85666218034993269" Top="0.56455399061032863" Right="1" Bottom="0.88497652582159625" />
+    <LayoutItem Name="Grid 2" Left="0.85666218034993269" Top="0.25352112676056338" Right="1" Bottom="0.56455399061032863" />
+    <LayoutItem Name="Chart 2" Left="0.4306864064602961" Top="0.25352112676056338" Right="0.85666218034993269" Bottom="0.88497652582159625" />
+    <LayoutItem Name="Chart 3" Left="0" Top="0" Right="0.4306864064602961" Bottom="0.25352112676056338" />
+    <LayoutItem Name="Chart 4" Left="0.4306864064602961" Top="0" Right="0.85666218034993269" Bottom="0.25352112676056338" />
+    <LayoutItem Name="Gauges 1" Left="0.85666218034993269" Top="0" Right="1" Bottom="0.25352112676056338" />
+  </Layout>
+</Dashboard>
