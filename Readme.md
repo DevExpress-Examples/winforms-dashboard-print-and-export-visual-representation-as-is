@@ -1,3 +1,9 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [DashboardExporter.cs](./CS/DashboardExport/DashboardExporter.cs) (VB: [DashboardExporter.vb](./VB/DashboardExport/DashboardExporter.vb))
+* [Form1.cs](./CS/DashboardExport/Form1.cs) (VB: [Form1.vb](./VB/DashboardExport/Form1.vb))
+<!-- default file list end -->
 # How to print and export a WinForms Dashboard visual representation as is
 
 
