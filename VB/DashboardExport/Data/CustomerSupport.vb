@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.Data
+﻿Imports System.Data
 Imports System
 Imports System.Collections.Generic
 
@@ -7,7 +6,7 @@ Namespace DashboardExport
 	Public Class CustomerSupportData
 		Public Class CustomerSupportItem
 			Private resTime As Integer
-			Private open As DateTime
+			Private open As Date
 			Private itIndex As Integer
 			Private it As String
 			Private emp As String
@@ -54,11 +53,11 @@ Namespace DashboardExport
 					itIndex = value
 				End Set
 			End Property
-			Public Property Opened() As DateTime
+			Public Property Opened() As Date
 				Get
 					Return open
 				End Get
-				Set(ByVal value As DateTime)
+				Set(ByVal value As Date)
 					open = value
 				End Set
 			End Property
@@ -78,9 +77,9 @@ Namespace DashboardExport
 		Private employees, products, issueTypes As DataTable
 		Private issueDistributionCount As Integer
 		Private employeeCount As Integer
-		Private endDate As DateTime = DateTime.Today
-		Private startDate As New DateTime(DateTime.Today.Year - 1, 1, 1)
-		Private startYear As Integer = DateTime.Today.Year
+		Private endDate As Date = Date.Today
+		Private startDate As New Date(Date.Today.Year - 1, 1, 1)
+		Private startYear As Integer = Date.Today.Year
 		Private productCount As Integer
 		Private customerCount As Integer
 		Private issueTypesCount As Integer
@@ -155,7 +154,7 @@ Namespace DashboardExport
 			Dim employeeProducts As New Dictionary(Of Integer, Integer)()
 			employeeCount = -1
 			For i As Integer = 0 To productCount - 1
-				For j As Integer = 0 To CInt(Fix(products.Rows(i)(2))) - 1
+				For j As Integer = 0 To (CInt(Fix(products.Rows(i)(2)))) - 1
 					employeeCount += 1
 					employeeProducts.Add(employeeCount, i)
 				Next j

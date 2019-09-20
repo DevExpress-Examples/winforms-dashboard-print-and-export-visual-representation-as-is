@@ -1,11 +1,12 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Windows.Forms
 Imports DevExpress.DashboardCommon
 
 Namespace DashboardExport
 	Partial Public Class Form1
-		Inherits Form
+		Inherits DevExpress.XtraEditors.XtraForm
+
+'INSTANT VB NOTE: The variable dashboardExporter was renamed since Visual Basic does not allow variables and other class members to have the same name:
 		Private dashboardExporter_Renamed As DashboardExporter
 		Private ReadOnly Property DashboardExporter() As DashboardExporter
 			Get
@@ -18,17 +19,17 @@ Namespace DashboardExport
 		Public Sub New()
 			InitializeComponent()
 		End Sub
-		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 			Dim dashboard As Dashboard = New DevExpress.DashboardCommon.Dashboard()
 			dashboard.LoadFromXml(GetType(Form1).Assembly.GetManifestResourceStream("CustomerSupport.xml"))
-			dashboard.DataSources(0).Data = New CustomerSupportData(DataLoader.LoadCustomerSupport(), DataLoader.LoadEmployees()).CustomerSupport
+			dashboard.DataSources(0).Data = (New CustomerSupportData(DataLoader.LoadCustomerSupport(), DataLoader.LoadEmployees())).CustomerSupport
 			dashboardViewer1.Dashboard = dashboard
 		End Sub
 		Private Sub button1_Click_1(ByVal sender As Object, ByVal e As EventArgs) Handles button1.Click
-			DashboardExporter.ShowPrintPreview(True)
+			DashboardExport.DashboardExporter.ShowPrintPreview(True)
 		End Sub
 		Private Sub button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles button2.Click
-			DashboardExporter.ShowPrintPreview(False)
+			DashboardExport.DashboardExporter.ShowPrintPreview(False)
 		End Sub
 	End Class
 End Namespace

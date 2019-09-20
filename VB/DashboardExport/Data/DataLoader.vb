@@ -1,13 +1,14 @@
-﻿Imports Microsoft.VisualBasic
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Data
 Imports System
 Imports DevExpress.Utils
 
 Namespace DashboardExport
 	Public NotInheritable Class DataLoader
+
 		Private Sub New()
 		End Sub
+
 		Private Shared Function LoadData(ByVal fileName As String) As DataSet
 			Dim path As String = FilesHelper.FindingFileName(AppDomain.CurrentDomain.BaseDirectory, String.Format("Data\{0}.xml", fileName), False)
 			Dim ds As New DataSet()

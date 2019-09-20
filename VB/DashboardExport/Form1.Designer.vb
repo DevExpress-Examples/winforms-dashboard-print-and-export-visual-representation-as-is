@@ -1,6 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
-Namespace DashboardExport
+﻿Namespace DashboardExport
 	Partial Public Class Form1
 		''' <summary>
 		''' Required designer variable.
@@ -28,8 +26,9 @@ Namespace DashboardExport
 			Me.components = New System.ComponentModel.Container()
 			Me.dashboardViewer1 = New DevExpress.DashboardWin.DashboardViewer(Me.components)
 			Me.panel1 = New System.Windows.Forms.Panel()
-			Me.button1 = New System.Windows.Forms.Button()
 			Me.button2 = New System.Windows.Forms.Button()
+			Me.button1 = New System.Windows.Forms.Button()
+			DirectCast(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).BeginInit()
 			Me.panel1.SuspendLayout()
 			Me.SuspendLayout()
 			' 
@@ -51,16 +50,6 @@ Namespace DashboardExport
 			Me.panel1.Size = New System.Drawing.Size(1659, 45)
 			Me.panel1.TabIndex = 1
 			' 
-			' button1
-			' 
-			Me.button1.Location = New System.Drawing.Point(23, 11)
-			Me.button1.Name = "button1"
-			Me.button1.Size = New System.Drawing.Size(164, 23)
-			Me.button1.TabIndex = 0
-			Me.button1.Text = "Show Preview"
-			Me.button1.UseVisualStyleBackColor = True
-'			Me.button1.Click += New System.EventHandler(Me.button1_Click_1);
-			' 
 			' button2
 			' 
 			Me.button2.Location = New System.Drawing.Point(202, 11)
@@ -69,7 +58,19 @@ Namespace DashboardExport
 			Me.button2.TabIndex = 1
 			Me.button2.Text = "Show Paged Preview"
 			Me.button2.UseVisualStyleBackColor = True
-'			Me.button2.Click += New System.EventHandler(Me.button2_Click);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.button2.Click += new System.EventHandler(this.button2_Click);
+			' 
+			' button1
+			' 
+			Me.button1.Location = New System.Drawing.Point(23, 11)
+			Me.button1.Name = "button1"
+			Me.button1.Size = New System.Drawing.Size(164, 23)
+			Me.button1.TabIndex = 0
+			Me.button1.Text = "Show Preview"
+			Me.button1.UseVisualStyleBackColor = True
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.button1.Click += new System.EventHandler(this.button1_Click_1);
 			' 
 			' Form1
 			' 
@@ -82,7 +83,9 @@ Namespace DashboardExport
 			Me.ShowIcon = False
 			Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 			Me.Text = "Dashboard Viewer"
-'			Me.Load += New System.EventHandler(Me.Form1_Load);
+'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
+'ORIGINAL LINE: this.Load += new System.EventHandler(this.Form1_Load);
+			DirectCast(Me.dashboardViewer1, System.ComponentModel.ISupportInitialize).EndInit()
 			Me.panel1.ResumeLayout(False)
 			Me.ResumeLayout(False)
 
