@@ -78,7 +78,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dashboardViewer1);
             this.Name = "Form1";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard Viewer";
             this.Load += new System.EventHandler(this.Form1_Load);

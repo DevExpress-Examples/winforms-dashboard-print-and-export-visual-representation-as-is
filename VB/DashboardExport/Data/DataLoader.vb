@@ -10,7 +10,7 @@ Namespace DashboardExport
 		End Sub
 
 		Private Shared Function LoadData(ByVal fileName As String) As DataSet
-			Dim path As String = FilesHelper.FindingFileName(AppDomain.CurrentDomain.BaseDirectory, String.Format("Data\{0}.xml", fileName), False)
+			Dim path As String = $"Data\{fileName}.xml"
 			Dim ds As New DataSet()
 			ds.ReadXml(path, XmlReadMode.ReadSchema)
 			Return ds
@@ -19,7 +19,7 @@ Namespace DashboardExport
 			Return LoadData("EmployeesAndDepartments")
 		End Function
 		Public Shared Function LoadCustomerSupport() As DataSet
-			Return LoadData("CustomerSupport")
+			Return LoadData("CustomerSupportData")
 		End Function
 	End Class
 End Namespace

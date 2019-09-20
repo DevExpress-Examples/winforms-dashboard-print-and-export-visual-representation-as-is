@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-using DevExpress.DashboardCommon;
+﻿using DevExpress.DashboardCommon;
+using System;
 
-namespace DashboardExport {
+namespace DashboardExport
+{
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
         DashboardExporter dashboardExporter;
@@ -15,12 +15,11 @@ namespace DashboardExport {
         }
         public Form1() {
             InitializeComponent();
+            
         }
         void Form1_Load(object sender, EventArgs e) {
             Dashboard dashboard = new DevExpress.DashboardCommon.Dashboard();
-            dashboard.LoadFromXml(
-                typeof(Form1).Assembly.GetManifestResourceStream(
-                    "DashboardExport.CustomerSupport.xml"));
+            dashboard.LoadFromXml(@"Data\CustomerSupport.xml");
             dashboard.DataSources[0].Data = 
                 new CustomerSupportData(
                     DataLoader.LoadCustomerSupport(), 

@@ -1,89 +1,23 @@
-﻿Imports System.Data
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
+Imports System.Data
 
 Namespace DashboardExport
 	Public Class CustomerSupportData
-		Public Class CustomerSupportItem
-			Private resTime As Integer
-			Private open As Date
-			Private itIndex As Integer
-			Private it As String
-			Private emp As String
-			Private cust As String
-			Private prodName As String
-
-			Public Property ProductName() As String
-				Get
-					Return prodName
-				End Get
-				Set(ByVal value As String)
-					prodName = value
-				End Set
-			End Property
-			Public Property Customer() As String
-				Get
-					Return cust
-				End Get
-				Set(ByVal value As String)
-					cust = value
-				End Set
-			End Property
-			Public Property Employee() As String
-				Get
-					Return emp
-				End Get
-				Set(ByVal value As String)
-					emp = value
-				End Set
-			End Property
-			Public Property IssueType() As String
-				Get
-					Return it
-				End Get
-				Set(ByVal value As String)
-					it = value
-				End Set
-			End Property
-			Public Property IssueTypeIndex() As Integer
-				Get
-					Return itIndex
-				End Get
-				Set(ByVal value As Integer)
-					itIndex = value
-				End Set
-			End Property
-			Public Property Opened() As Date
-				Get
-					Return open
-				End Get
-				Set(ByVal value As Date)
-					open = value
-				End Set
-			End Property
-			Public Property ResolvedTime() As Integer
-				Get
-					Return resTime
-				End Get
-				Set(ByVal value As Integer)
-					resTime = value
-				End Set
-			End Property
-		End Class
+		Private customerCount As Integer
+		Private employeeCount As Integer
+		Private employees, products, issueTypes As DataTable
+		Private endDate As Date = Date.Today
+		Private issueDistributionCount As Integer
+		Private issueTypesCount As Integer
+		Private ReadOnly issueTypesTableName As String = "IssueTypes"
+		Private ReadOnly items As New List(Of CustomerSupportItem)()
+		Private productCount As Integer
+		Private ReadOnly productsTableName As String = "Products"
 
 		Private ReadOnly rand As New Random()
-		Private ReadOnly issueTypesTableName As String = "IssueTypes"
-		Private ReadOnly productsTableName As String = "Products"
-		Private employees, products, issueTypes As DataTable
-		Private issueDistributionCount As Integer
-		Private employeeCount As Integer
-		Private endDate As Date = Date.Today
 		Private startDate As New Date(Date.Today.Year - 1, 1, 1)
 		Private startYear As Integer = Date.Today.Year
-		Private productCount As Integer
-		Private customerCount As Integer
-		Private issueTypesCount As Integer
-		Private ReadOnly items As New List(Of CustomerSupportItem)()
 
 		Public Sub New(ByVal dsCustomerSupport As DataSet, ByVal dsEmployees As DataSet)
 			LoadDataTables(dsCustomerSupport, dsEmployees)
@@ -111,45 +45,6 @@ Namespace DashboardExport
 			Loop
 		End Sub
 
-		Public ReadOnly Property CustomerSupport() As IEnumerable(Of CustomerSupportItem)
-			Get
-				Return items
-			End Get
-		End Property
-
-		Private Sub LoadDataTables(ByVal dsCustomerSupport As DataSet, ByVal dsEmployees As DataSet)
-			employees = dsEmployees.Tables("Employees")
-			products = dsCustomerSupport.Tables(productsTableName)
-			issueTypes = dsCustomerSupport.Tables(issueTypesTableName)
-			productCount = products.Rows.Count
-			customerCount = employees.Rows.Count
-			issueTypesCount = issueTypes.Rows.Count
-		End Sub
-		Private Function GetMonthResolvedDeviation() As List(Of Integer)
-			Dim monthResolvedDeviation As New List(Of Integer)(12)
-			For i As Integer = 0 To 12
-				monthResolvedDeviation.Add(rand.Next(0, 10))
-			Next i
-			Return monthResolvedDeviation
-		End Function
-		Private Function GetMonthIssuesDeviation() As List(Of Integer)
-			Dim monthIssuesDeviation As New List(Of Integer)(12)
-			For i As Integer = 0 To 12
-				monthIssuesDeviation.Add(rand.Next(15, 20))
-			Next i
-			monthIssuesDeviation(5) -= 2
-			monthIssuesDeviation(6) -= 7
-			monthIssuesDeviation(7) -= 8
-			monthIssuesDeviation(8) -= 9
-			Return monthIssuesDeviation
-		End Function
-		Private Function GetYearDeviation() As Dictionary(Of Integer, Integer)
-			Dim yearDeviation As New Dictionary(Of Integer, Integer)()
-			For i As Integer = startDate.Year To endDate.Year
-				yearDeviation.Add(i, rand.Next(0, 10) + i - startYear)
-			Next i
-			Return yearDeviation
-		End Function
 		Private Function GetEmployeeByProduct() As Dictionary(Of Integer, Integer)
 			Dim employeeProducts As New Dictionary(Of Integer, Integer)()
 			employeeCount = -1
@@ -190,5 +85,55 @@ Namespace DashboardExport
 			Next i
 			Return issueDistribution
 		End Function
+		Private Function GetMonthIssuesDeviation() As List(Of Integer)
+			Dim monthIssuesDeviation As New List(Of Integer)(12)
+			For i As Integer = 0 To 12
+				monthIssuesDeviation.Add(rand.Next(15, 20))
+			Next i
+			monthIssuesDeviation(5) -= 2
+			monthIssuesDeviation(6) -= 7
+			monthIssuesDeviation(7) -= 8
+			monthIssuesDeviation(8) -= 9
+			Return monthIssuesDeviation
+		End Function
+		Private Function GetMonthResolvedDeviation() As List(Of Integer)
+			Dim monthResolvedDeviation As New List(Of Integer)(12)
+			For i As Integer = 0 To 12
+				monthResolvedDeviation.Add(rand.Next(0, 10))
+			Next i
+			Return monthResolvedDeviation
+		End Function
+		Private Function GetYearDeviation() As Dictionary(Of Integer, Integer)
+			Dim yearDeviation As New Dictionary(Of Integer, Integer)()
+			For i As Integer = startDate.Year To endDate.Year
+				yearDeviation.Add(i, rand.Next(0, 10) + i - startYear)
+			Next i
+			Return yearDeviation
+		End Function
+
+		Private Sub LoadDataTables(ByVal dsCustomerSupport As DataSet, ByVal dsEmployees As DataSet)
+			employees = dsEmployees.Tables("Employees")
+			products = dsCustomerSupport.Tables(productsTableName)
+			issueTypes = dsCustomerSupport.Tables(issueTypesTableName)
+			productCount = products.Rows.Count
+			customerCount = employees.Rows.Count
+			issueTypesCount = issueTypes.Rows.Count
+		End Sub
+
+		Public ReadOnly Property CustomerSupport() As IEnumerable(Of CustomerSupportItem)
+			Get
+				Return items
+			End Get
+		End Property
+
+		Public Class CustomerSupportItem
+			Public Property Customer() As String
+			Public Property Employee() As String
+			Public Property IssueType() As String
+			Public Property IssueTypeIndex() As Integer
+			Public Property Opened() As Date
+			Public Property ProductName() As String
+			Public Property ResolvedTime() As Integer
+		End Class
 	End Class
 End Namespace

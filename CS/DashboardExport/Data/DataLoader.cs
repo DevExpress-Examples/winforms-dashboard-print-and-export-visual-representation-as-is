@@ -6,7 +6,7 @@ using DevExpress.Utils;
 namespace DashboardExport {
     public static class DataLoader {
         static DataSet LoadData(string fileName) {
-            string path = FilesHelper.FindingFileName(AppDomain.CurrentDomain.BaseDirectory, string.Format(@"Data\{0}.xml", fileName), false);
+            string path = $@"Data\{fileName}.xml";
             DataSet ds = new DataSet();
             ds.ReadXml(path, XmlReadMode.ReadSchema);
             return ds;
@@ -15,7 +15,7 @@ namespace DashboardExport {
             return LoadData("EmployeesAndDepartments");
         }
         public static DataSet LoadCustomerSupport() {
-            return LoadData("CustomerSupport");
+            return LoadData("CustomerSupportData");
         }
     }
 }

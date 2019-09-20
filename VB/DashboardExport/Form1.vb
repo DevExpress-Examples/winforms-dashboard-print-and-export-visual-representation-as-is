@@ -1,6 +1,5 @@
-﻿Imports System
-Imports System.Windows.Forms
-Imports DevExpress.DashboardCommon
+﻿Imports DevExpress.DashboardCommon
+Imports System
 
 Namespace DashboardExport
 	Partial Public Class Form1
@@ -18,10 +17,11 @@ Namespace DashboardExport
 		End Property
 		Public Sub New()
 			InitializeComponent()
+
 		End Sub
 		Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
 			Dim dashboard As Dashboard = New DevExpress.DashboardCommon.Dashboard()
-			dashboard.LoadFromXml(GetType(Form1).Assembly.GetManifestResourceStream("CustomerSupport.xml"))
+			dashboard.LoadFromXml("Data\CustomerSupport.xml")
 			dashboard.DataSources(0).Data = (New CustomerSupportData(DataLoader.LoadCustomerSupport(), DataLoader.LoadEmployees())).CustomerSupport
 			dashboardViewer1.Dashboard = dashboard
 		End Sub

@@ -82,7 +82,6 @@
     </Reference>
     <Reference Include="DevExpress.Images.v18.2" />
     <Reference Include="DevExpress.XtraRichEdit.v18.2" />
-    <Reference Include="DevExpress.XtraRichEdit.v18.2.Extensions" />
     <Reference Include="DevExpress.XtraTreeList.v18.2" />
     <Reference Include="DevExpress.XtraWizard.v18.2" />
     <Reference Include="System" />
@@ -146,7 +145,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CustomerSupport.xml" />
+    <Content Include="Data\CustomerSupport.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\CustomerSupportData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\EmployeesAndDepartments.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

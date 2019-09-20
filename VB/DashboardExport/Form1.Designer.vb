@@ -80,7 +80,6 @@
 			Me.Controls.Add(Me.panel1)
 			Me.Controls.Add(Me.dashboardViewer1)
 			Me.Name = "Form1"
-			Me.ShowIcon = False
 			Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
 			Me.Text = "Dashboard Viewer"
 'INSTANT VB NOTE: The following InitializeComponent event wireup was converted to a 'Handles' clause:
