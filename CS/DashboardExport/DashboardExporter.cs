@@ -50,15 +50,15 @@ namespace DashboardExport {
 #region IPrintable
         void IPrintable.AcceptChanges() {
         }
-        bool IPrintable.CreatesIntersectedBricks {
-            get { return false; }
-        }
         bool IPrintable.HasPropertyEditor() {
             return false;
         }
         UserControl IPrintable.PropertyEditorControl {
             get { return null; }
         }
+
+        public bool CreatesIntersectedBricks { get; set; }
+
         void IPrintable.RejectChanges() {            
         }
         void IPrintable.ShowHelp() {

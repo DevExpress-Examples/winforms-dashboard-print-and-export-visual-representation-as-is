@@ -9,5 +9,6 @@
 
 This example demonstrates the use of the [PrintableComponentLink](https://docs.devexpress.com/WindowsForms/DevExpress.XtraPrinting.PrintableComponentLink) to print a dashboard.
 
-A custom **DashboardExporter** class implements the [IPrintable](https://docs.devexpress.com/WindowsForms/DevExpress.XtraPrinting.IPrintable) interface and encapsulates all logic required to specify page settings, create a PrintableComponentLink and show the **Print Preview** window.
+A custom **DashboardExporter** class implements the [IPrintable](https://docs.devexpress.com/WindowsForms/DevExpress.XtraPrinting.IPrintable) interface and encapsulates all logic required to specify page settings, create a PrintableComponentLink and show the **Print Preview** window. Use the **Show Preview** and **Show Paged Preview** buttons to view the result.
 
+![](dashboard-viewer-custom-export.png)
