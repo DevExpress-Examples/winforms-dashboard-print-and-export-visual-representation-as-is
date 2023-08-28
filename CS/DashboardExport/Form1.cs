@@ -5,12 +5,12 @@ namespace DashboardExport
 {
     public partial class Form1 : DevExpress.XtraEditors.XtraForm
     {
-        DashboardExporter dashboardExporter;
-        DashboardExporter DashboardExporter {
+        CustomDashboardExporter customDashboardExporter;
+        CustomDashboardExporter CustomDashboardExporter {
             get {
-                if(dashboardExporter == null)
-                    dashboardExporter = new DashboardExporter(dashboardViewer1);
-                return dashboardExporter;
+                if(customDashboardExporter == null)
+                    customDashboardExporter = new CustomDashboardExporter(dashboardViewer1);
+                return customDashboardExporter;
             }
         }
         public Form1() {
@@ -28,10 +28,10 @@ namespace DashboardExport
             dashboardViewer1.Dashboard = dashboard;
         }
         void button1_Click_1(object sender, EventArgs e) {
-            DashboardExporter.ShowPrintPreview(true);
+            CustomDashboardExporter.ShowPrintPreview(true);
         }
         private void button2_Click(object sender, EventArgs e) {
-            DashboardExporter.ShowPrintPreview(false);
+            CustomDashboardExporter.ShowPrintPreview(false);
         }
     }
 }

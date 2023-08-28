@@ -7,12 +7,12 @@ using DevExpress.XtraReports.Native;
 using DevExpress.XtraReports.UI;
 
 namespace DashboardExport {
-    class DashboardExporter : IPrintable {
+    public class CustomDashboardExporter : IPrintable {
         PrintingSystem ps = new PrintingSystem();
         PrintableComponentLink componentLink = new PrintableComponentLink();
         DashboardViewer viewer;
         bool paged;
-        public DashboardExporter(DashboardViewer viewer) {
+        public CustomDashboardExporter(DashboardViewer viewer) {
             this.viewer = viewer;
             ps.Links.AddRange(new object[] { componentLink });
             ps.AfterChange += ps_AfterChange;
@@ -20,13 +20,13 @@ namespace DashboardExport {
         }
         internal void ShowPrintPreview(bool fitPage) {
             if(fitPage) {
-                componentLink.PaperKind = System.Drawing.Printing.PaperKind.Custom;
+                componentLink.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
                 componentLink.CustomPaperSize = 
                     new Size(Convert.ToInt32(Math.Ceiling(viewer.Width / 0.96f)) + 45, 
                         Convert.ToInt32(Math.Ceiling(viewer.Height / 0.96f)) + 45);
                 ps.PreviewFormEx.Size = new Size(viewer.Width + 100, viewer.Height + 100);
             } else {
-                componentLink.PaperKind = System.Drawing.Printing.PaperKind.A4;
+                componentLink.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
                 ps.PreviewFormEx.Size = new Size(0x2f0, 0x274);
             }
             componentLink.Margins = new System.Drawing.Printing.Margins(20, 20, 20, 20);
@@ -66,7 +66,7 @@ namespace DashboardExport {
         bool IPrintable.SupportsHelp() {
             return false;
         }
-        void IBasePrintable.CreateArea(string areaName, IBrickGraphics graph) {
+        void IBasePrintable.CreateArea(string areaName, BrickGraphics graph) {
             if(areaName != "Detail")
                 return;
             int width;
@@ -88,10 +88,10 @@ namespace DashboardExport {
                     SizeMode = ImageSizeMode.CenterImage
                 }, new Rectangle(0, 0, width, height));
         }
-        void IBasePrintable.Finalize(IPrintingSystem ps, ILink link) {
+        void IBasePrintable.Finalize(PrintingSystemBase ps, LinkBase link) {
         }
-        void IBasePrintable.Initialize(IPrintingSystem ps, ILink link) {
+        void IBasePrintable.Initialize(PrintingSystemBase ps, LinkBase link) {
         }
-#endregion
+        #endregion
     }
 }
