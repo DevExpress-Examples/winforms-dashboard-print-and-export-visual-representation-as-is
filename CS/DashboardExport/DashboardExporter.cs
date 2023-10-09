@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using DevExpress.XtraDashboard;
+using DevExpress.DashboardWin;
 using DevExpress.XtraPrinting;
 using DevExpress.XtraReports.Native;
 using DevExpress.XtraReports.UI;

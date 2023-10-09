@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            this.dashboardViewer1 = new DevExpress.XtraDashboard.DashboardViewer(this.components);
+            this.dashboardViewer1 = new DevExpress.DashboardWin.DashboardViewer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -88,7 +88,7 @@
 
         #endregion
 
-        private DevExpress.XtraDashboard.DashboardViewer dashboardViewer1;
+        private DevExpress.DashboardWin.DashboardViewer dashboardViewer1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
