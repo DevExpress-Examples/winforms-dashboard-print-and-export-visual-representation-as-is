@@ -4,12 +4,6 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
-<!-- default file list -->
-*Files to look at*:
-
-* [CustomDashboardExporter.cs](./CS/DashboardExport/CustomDashboardExporter.cs) (VB: [CustomDashboardExporter.vb](./VB/DashboardExport/CustomDashboardExporter.vb))
-* [Form1.cs](./CS/DashboardExport/Form1.cs) (VB: [Form1.vb](./VB/DashboardExport/Form1.vb))
-<!-- default file list end -->
 # Dashboard for WinForms - How to Use the PrintableComponentLink to Print a Dashboard
 
 This example demonstrates the use of the [PrintableComponentLink](https://docs.devexpress.com/WindowsForms/DevExpress.XtraPrinting.PrintableComponentLink) to print a dashboard.
@@ -18,8 +12,12 @@ A custom **CustomDashboardExporter** class implements the [IPrintable](https://d
 
 ![](dashboard-viewer-custom-export.png)
 
-## Documentation
+## Files to Review
 
+* [CustomDashboardExporter.cs](./CS/DashboardExport/CustomDashboardExporter.cs) (VB: [CustomDashboardExporter.vb](./VB/DashboardExport/CustomDashboardExporter.vb))
+* [Form1.cs](./CS/DashboardExport/Form1.cs) (VB: [Form1.vb](./VB/DashboardExport/Form1.vb))
+
+## Documentation
 - [Printing and Exporting](https://docs.devexpress.com/Dashboard/15181/common-features/printing-and-exporting?p=netframework)
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
