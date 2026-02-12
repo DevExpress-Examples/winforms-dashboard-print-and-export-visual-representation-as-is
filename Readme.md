@@ -21,7 +21,7 @@ A custom **DashboardExporter** class implements the [IPrintable](https://docs.de
 
 - [Printing and Exporting](https://docs.devexpress.com/Dashboard/15181/common-features/printing-and-exporting?p=netframework)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-dashboard-print-and-export-visual-representation-as-is&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=winforms-dashboard-print-and-export-visual-representation-as-is&~~~was_helpful=no)
 
